@@ -1,16 +1,28 @@
 from flask import Flask, json, jsonify, request
 import requests
+from flask_cors import CORS, cross_origin
 
 app = Flask('__name__')
+cors = CORS(app)
+app.config["CORS_HEADERS"] = "Content-Type"
 
 r = requests.get('https://api.coinmarketcap.com/v1/ticker/')
 coins = r.json()
 
+@app.route('/')
+@cross_origin()
+def init():
+    return jsonify({
+        "ok": "true"
+    })
+
 @app.route('/coin')
+@cross_origin()
 def home():
     return jsonify(coins), 200
 
 @app.route('/coin/<string:id>', methods=['GET'])
+@cross_origin()
 def searchOne(id):
     show = [obj for obj in coins if obj['id'] == id]
     show = show[0]
@@ -23,6 +35,7 @@ def searchOne(id):
     }), 200
 
 @app.route('/coin/topten', methods=['GET'])
+@cross_origin()
 def showTop():
     top = []
     i = 0
