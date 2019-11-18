@@ -33,6 +33,11 @@ Access the link 127.0.0.1:5000 and you can start the tests.
 
 Used for adding a website/portal the function to search the coin by their ID, aswell as show the top ten coins in the market at the moment of search!
 
+- Comands: 
+- ```/coin``` to see all the coins informations.
+- ```/(coin id, example: dogecoin)```to see only the requested coin informations.
+- ```/coin/topten```to see the top ten most valued coins in the market!
+
 ## Authors
 
 * **Marcelo Mena** - [arcmena](https://github.com/arcmena)
