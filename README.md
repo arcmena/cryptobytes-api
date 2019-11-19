@@ -24,7 +24,7 @@ virtualenv .venv
 ```
 Install ```requests``` and ```flask``` dependencies, then start the server with ```source .venv/Script/activate```
 
-Access http://localhost:5000 and check for usage below.
+```python server.py``` to start. Access http://localhost:5000 and check for usage below.
 
 ## Usage
 

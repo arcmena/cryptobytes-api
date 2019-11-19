@@ -24,6 +24,8 @@ def home():
 @app.route('/coin/<string:id>', methods=['GET'])
 @cross_origin()
 def searchOne(id):
+    r = requests.get('https://api.coinmarketcap.com/v1/ticker/')
+    coins = r.json()
     show = [obj for obj in coins if obj['id'] == id]
     show = show[0]
     if not show: return jsonify({'error' : 'not found'}), 404
@@ -37,6 +39,8 @@ def searchOne(id):
 @app.route('/coin/topten', methods=['GET'])
 @cross_origin()
 def showTop():
+    r = requests.get('https://api.coinmarketcap.com/v1/ticker/')
+    coins = r.json()
     top = []
     i = 0
     while i < 10:
